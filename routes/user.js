@@ -4,7 +4,7 @@ const { UserModel }=require("../db")
 const jwt=require("jsonwebtoken")
 const {z}=require("zod")
 const bcrypt=require("bcrypt")
-const JSON_USER_TOKEN="dasfuabalsubdasukndasu"
+
 
 
 
@@ -61,7 +61,7 @@ UserRoute.post('/signin',async(req,res)=>{
    if(UserData && hashedpassword){
     const token=jwt.sign({
         id:UserData._id
-    },JSON_USER_TOKEN)
+    },process.env.JSON_USER_TOKEN)
     res.json({
         token:token
     })
